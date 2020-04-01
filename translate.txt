@@ -1,0 +1,9 @@
+To translate a word sentence from one language into another:
+<highlight><tab><symbol>translate de..no Heute ist ein schöner Tag<end>
+<highlight><tab><symbol>translate no..fr Jeg elsker Spekkhogger<end>
+<highlight><tab><symbol>translate en..es What's the weather like in Madrid?<end>
+
+To translate a word or sentence into English:
+<highlight><tab><symbol>translate de Heute ist ein schöner Tag<end>
+<highlight><tab><symbol>translate no Jeg elsker Spekkhogger<end>
+<highlight><tab><symbol>translate eo Rikoltanto<end>

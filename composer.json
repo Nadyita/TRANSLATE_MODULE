@@ -1,0 +1,8 @@
+{
+    "name": "nadyita/translate_module",
+    "type": "project",
+    "description": "A Budabot module that provides a command to translate text fom one language into another.",
+    "require": {
+        "stichoza/google-translate-php": "^4.1"
+    }
+}
