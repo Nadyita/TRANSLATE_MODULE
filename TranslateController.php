@@ -1,8 +1,9 @@
 <?php
 
-namespace Budabot\User\Modules;
+namespace Budabot\User\Modules\TRANSLATE_MODULE;
 
 /**
+ * @author Nadyita (RK5) <nadyita@hodorraid.org>
  * @Instance
  *
  * Commands this controller contains:
