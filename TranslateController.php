@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Budabot\User\Modules\TRANSLATE_MODULE;
+namespace Nadybot\User\Modules\TRANSLATE_MODULE;
 
 /**
  * @author Nadyita (RK5) <nadyita@hodorraid.org>
@@ -18,35 +18,12 @@ namespace Budabot\User\Modules\TRANSLATE_MODULE;
 
 require_once __DIR__.'/vendor/autoload.php';
 
+use Nadybot\Core\CommandReply;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class TranslateController {
-	
-	public $moduleName;
 
-	/**
-	 * @var \Budabot\Core\Text $text
-	 * @Inject
-	 */
-	public $text;
-	
-	/**
-	 * @var \Budabot\Core\DB $db
-	 * @Inject
-	 */
-	public $db;
-	
-	/**
-	 * @var \Budabot\Core\Util $util
-	 * @Inject
-	 */
-	public $util;
-
-	/**
-	 * @var \Budabot\Core\LoggerWrapper $logger
-	 * @Logger
-	 */
-	public $logger;
+	public string $moduleName;
 
 	/**
 	 * Safe wrapper around the translate API catching errors
@@ -69,17 +46,10 @@ class TranslateController {
 	/**
 	 * Command to translate between arbitrary languages
 	 *
-	 * @param string                     $message The full command received
-	 * @param string                     $channel Where did the command come from (tell, guild, priv)
-	 * @param string                     $sender  The name of the user issuing the command
-	 * @param \Budabot\Core\CommandReply $sendto  Object to use to reply to
-	 * @param string[]                   $args    The arguments to the disc-command
-	 * @return void
-	 *
 	 * @HandlesCommand("translate")
 	 * @Matches("/^translate\s+([a-z]{2})\.\.([a-z]{2})\s+(.+)$/i")
 	 */
-	public function translate2Command($message, $channel, $sender, $sendto, $args) {
+	public function translate2Command(string $message, string $channel, string $sender, CommandReply $sendto, array $args): void {
 		$tr = new GoogleTranslate($args[2], $args[1], ['timeout' => 10]);
 		$sendto->reply($this->safeTranslate($tr, $args[3]));
 	}
@@ -87,18 +57,22 @@ class TranslateController {
 	/**
 	 * Command to translate from given language into English
 	 *
-	 * @param string                     $message The full command received
-	 * @param string                     $channel Where did the command come from (tell, guild, priv)
-	 * @param string                     $sender  The name of the user issuing the command
-	 * @param \Budabot\Core\CommandReply $sendto  Object to use to reply to
-	 * @param string[]                   $args    The arguments to the disc-command
-	 * @return void
-	 *
 	 * @HandlesCommand("translate")
 	 * @Matches("/^translate\s+([a-z]{2})\s+(.+)$/i")
 	 */
-	public function translate1Command($message, $channel, $sender, $sendto, $args) {
+	public function translate1Command(string $message, string $channel, string $sender, CommandReply $sendto, array $args): void {
 		$tr = new GoogleTranslate('en', $args[1], ['timeout' => 10]);
 		$sendto->reply($this->safeTranslate($tr, $args[2]));
+	}
+
+	/**
+	 * Command to translate from any language into English
+	 *
+	 * @HandlesCommand("translate")
+	 * @Matches("/^translate\s+(.+)$/i")
+	 */
+	public function translate0Command(string $message, string $channel, string $sender, CommandReply $sendto, array $args): void {
+		$tr = new GoogleTranslate('en', null, ['timeout' => 10]);
+		$sendto->reply($this->safeTranslate($tr, $args[1]));
 	}
 }
