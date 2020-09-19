@@ -36,7 +36,7 @@ class TranslateController {
 		try {
 			$translation = $tr->translate($message);
 		} catch (\ErrorException $e) {
-			$translation = $e->getMessage();
+			return "Either the source or the target language is not supported.";
 		} catch (\UnexpectedValueException $e) {
 			$translation = "An unexpected error occurred while translating.";
 		}
