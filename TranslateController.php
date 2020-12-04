@@ -47,7 +47,7 @@ class TranslateController {
 	 * Command to translate between arbitrary languages
 	 *
 	 * @HandlesCommand("translate")
-	 * @Matches("/^translate\s+([a-z]{2})\.\.([a-z]{2})\s+(.+)$/i")
+	 * @Matches("/^translate\s+([a-z]{2})(?:\.\.|-)([a-z]{2})\s+(.+)$/i")
 	 */
 	public function translate2Command(string $message, string $channel, string $sender, CommandReply $sendto, array $args): void {
 		$tr = new GoogleTranslate($args[2], $args[1], ['timeout' => 10]);

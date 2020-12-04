@@ -1,9 +1,23 @@
 To translate a word sentence from one language into another:
+<highlight><tab><symbol>translate 'from'..'to' 'text'<end>
+From German to Norse:
 <highlight><tab><symbol>translate de..no Heute ist ein schöner Tag<end>
+From Norse to French
 <highlight><tab><symbol>translate no..fr Jeg elsker Spekkhogger<end>
+From English to Spanish
 <highlight><tab><symbol>translate en..es What's the weather like in Madrid?<end>
 
 To translate a word or sentence into English:
+<highlight><tab><symbol>translate 'from' 'text'<end>
+To translate from German:
 <highlight><tab><symbol>translate de Heute ist ein schöner Tag<end>
+To translate from Norse:
 <highlight><tab><symbol>translate no Jeg elsker Spekkhogger<end>
+To translate from Esperanto:
 <highlight><tab><symbol>translate eo Rikoltanto<end>
+
+To translate a word or sentence from any language unto English,
+trying to guess the source language:
+<highlight><tab><symbol>translate 'text'<end>
+To translate a text of an unknown language into English
+<highlight><tab><symbol>translate Ar trebui sa gasim mai intai proprietarul<end>
